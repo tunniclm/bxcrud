@@ -4,6 +4,7 @@
   "appDir": "crud",
   "bluemix": true,
   "metrics": true,
+  "autoscale": true,
   "services": {
     "cloudant": [
       {

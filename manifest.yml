@@ -2,6 +2,9 @@ declared-services:
   cloudantCrudService:
     label: cloudantNoSQLDB
     plan: Lite
+  crudScalingService:
+    label: Auto-scaling
+    plan: free
 applications:
 - name: crud
   memory: 128M
@@ -13,4 +16,5 @@ applications:
     OPENAPI_SPEC: "/explorer/swagger.yml"
   services:
   - cloudantCrudService
+  - crudScalingService
   timeout: 180

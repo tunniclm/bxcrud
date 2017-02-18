@@ -4,6 +4,7 @@ import Configuration
 
 import SwiftMetrics
 import SwiftMetricsDash
+import SwiftMetricsBluemix
 
 public class GeneratedApplication {
     public let router: Router
@@ -18,6 +19,7 @@ public class GeneratedApplication {
         // Set up monitoring
         let sm = try SwiftMetrics()
         let _ = try SwiftMetricsDash(swiftMetricsInstance : sm, endpoint: router)
+    let _ = AutoScalar(swiftMetricsInstance: sm)
 
         factory = AdapterFactory(manager: manager)
 
