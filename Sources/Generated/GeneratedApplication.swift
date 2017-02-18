@@ -10,8 +10,8 @@ public class GeneratedApplication {
     public init(configURL: URL) throws {
         router = Router()
         manager = try ConfigurationManager()
-                          .load(.environmentVariables)
                           .load(url: configURL)
+                          .load(.environmentVariables)
         factory = AdapterFactory(manager: manager)
 
         try BookResource(factory: factory).setupRoutes(router: router)
