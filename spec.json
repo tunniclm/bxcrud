@@ -1,0 +1,45 @@
+{
+  "appType": "crud",
+  "appName": "crud",
+  "appDir": "crud",
+  "bluemix": true,
+  "services": {
+    "cloudant": [
+      {
+        "type": "cloudant",
+        "host": "localhost",
+        "port": 5984,
+        "secured": false,
+        "name": "cloudantCrudService"
+      }
+    ]
+  },
+  "crudservice": "cloudantCrudService",
+  "config": {
+    "logger": "helium",
+    "port": 8090
+  },
+  "models": [
+    {
+      "name": "book",
+      "plural": "books",
+      "classname": "Book",
+      "properties": {
+        "id": {
+          "type": "string",
+          "id": true
+        },
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "author": {
+          "type": "string"
+        },
+        "pages": {
+          "type": "number"
+        }
+      }
+    }
+  ]
+}
