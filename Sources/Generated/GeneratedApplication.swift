@@ -1,5 +1,6 @@
 import Foundation
 import Kitura
+import LoggerAPI
 import Configuration
 
 import SwiftMetrics
@@ -22,6 +23,19 @@ public class GeneratedApplication {
     let _ = AutoScalar(swiftMetricsInstance: sm)
 
         factory = AdapterFactory(manager: manager)
+
+        // Host swagger definition
+        router.get("/explorer/swagger.yml") { request, response, next in
+            // TODO(tunniclm): Should probably just pass the root into init()
+            let projectRootURL = configURL.deletingLastPathComponent()
+            let swaggerFileURL = URL(fileURLWithPath: "definitions/crud.yaml",
+                                     relativeTo: projectRootURL)
+            do {
+                try response.send(fileName: swaggerFileURL.path).end()
+            } catch {
+                Log.error("Failed to serve OpenAPI Swagger definition from \(swaggerFileURL.path)")
+            }
+        }
 
         try BookResource(factory: factory).setupRoutes(router: router)
     }
