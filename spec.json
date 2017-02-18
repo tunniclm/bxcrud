@@ -3,6 +3,7 @@
   "appName": "crud",
   "appDir": "crud",
   "bluemix": true,
+  "metrics": true,
   "services": {
     "cloudant": [
       {
